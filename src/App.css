@@ -1,38 +1,369 @@
-.App {
-  text-align: center;
+:root {
+  --main-bg-color: rgb(88, 187, 31);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card:hover {
+  transform: translateY(5px);
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 39px 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a:hover {
+  transform: translateY(5px);
+  transition: 0.5s;
+  background-color: var(--main-bg-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.shut:hover {
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 39px 4px;
+  background-color: var(--main-bg-color);
+}
+
+.textlink:hover {
+  color: rgba(73, 49, 49, 0.986);
+}
+
+body {
+  font-family: "Bebas Neue", cursive;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  margin: 0px;
+  padding: 0px;
   display: flex;
+  position: fixed;
+  z-index: 10;
   flex-direction: column;
+  height: 100vh;
+  width: 30vw;
+  background-color: cadetblue;
+  font-size: 2rem;
+  top: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+  background-color: rgb(12, 43, 219);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.header-mobile {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  flex-direction: column;
+  height: 100vh;
+  width: 20vw;
+  min-width: 60px;
+  max-width: 60px;
+  background-color: rgb(29, 61, 243);
+  border-radius: 10px;
+  font-size: 2rem;
+  top: 0;
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.menu-icon {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-icon:hover {
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: rgb(88, 187, 31);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* .close-icon .iconsvg {
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+} */
+
+.closed:hover {
+  color: coral;
+}
+
+.open .textlink {
+  list-style: none;
+}
+
+.open {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.closed {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.iconsvg {
+  color: rgb(255, 255, 255);
+  height: 100px;
+}
+
+.textlink {
+  color: rgb(255, 255, 255);
+}
+
+.closed .textlink {
+  display: none;
+  list-style: none;
+}
+
+.lisidebar {
+  width: 100%;
+  height: 100%;
+}
+
+.lisidebar .open {
+  list-style: none;
+  width: 100%;
+  height: 30vh;
+}
+
+.shut {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.shut:hover {
+  background-color: black;
+}
+
+/* .open .oicon .textlink {
+  display: none;
+} */
+
+/* .navtext {
+  background-image: linear-gradient(90deg, #292704, #353a04);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  font-size: 1.1vw;
+} */
+
+/* .icon {
+  min-height: 6rem;
+  min-height: 6em;
+} */
+
+.icon:hover {
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  transform: translateY(3px);
+}
+
+h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* .categorydiv {
+  border: 1px transparent solid;
+  margin: 15%;
+  padding: 0%;
+}  */
+
+@media screen and (max-width: 600px) {
+  .categorydiv {
+    border: 1px transparent solid;
+    margin: 10%;
+    padding: 0%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 600px) {
+  .listdiv {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .griddiv {
+    padding: 15%;
+    position: relative;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .proteindiv {
+    position: relative;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .splide {
+    position: relative;
+    margin: 0;
+    left: 32px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .highProtein {
+    text-align: center;
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .h1protein {
+    position: relative;
+    left: 20px;
+  }
+}
+
+/* @media screen and (max-width: 600px) {
+  .card {
+    width: 80%;
+  } */
+
+@media screen and (max-width: 600px) {
+  .paragraphprotein {
+    position: relative;
+    top: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .paelodiv {
+    position: relative;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .paragraphpaelos {
+    position: relative;
+    top: 1rem;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .paeloesplide {
+    position: relative;
+    left: -30px;
+    width: 360px;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .h1paeloe {
+    position: relative;
+    right: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .splide__list {
+    position: relative;
+    bottom: 15px;
+  }
+}
+
+.categoryicon {
+  height: 50px;
+  width: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .cuisineh2 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    left: 36px;
+  }
+}
+
+.clicked {
+  color: black;
+  height: 55%;
+  width: 55%;
+}
+
+.not-clicked {
+  color: rgb(88, 187, 31);
+  height: 60%;
+  width: 60%;
+}
+
+.like_icon {
+  cursor: grabbing;
+  position: relative;
+  top: 10%;
+}
+
+/* .cuisineimg {
+  position: relative;
+  z-index: -10;
+} */
+
+.likeddiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.likeddivsearched {
+  display: flex;
+  flex-direction: row;
+}
+
+.not-clicked :hover {
+  height: 40px;
+  width: 40px;
+  cursor: grabbing;
+  position: relative;
+  transition: 0.2s;
+}
+
+.formcss {
+  width: 20%;
+  height: 20%;
+}
+
+.searchsvg {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  z-index: 2;
+  color: black;
+  top: 30%;
 }
