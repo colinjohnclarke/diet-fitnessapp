@@ -60,12 +60,12 @@ function Recipie() {
   );
 }
 
-const rendertext = () => {
-  if (active === "Show_Ingredients") {
-    return <Showingredients />;
-  } else {
-    return <Showinstructions />;
-  }
+// const rendertext = () => {
+//   if (active === "Show_Ingredients") {
+//     return <Showingredients />;
+//   } else {
+//     return <Showinstructions />;
+//   }
 };
 
 const Wrapper = styled.div`
