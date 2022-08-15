@@ -17,9 +17,9 @@ function Sidebar() {
     <div className={active ? "header" : "header-mobile"}>
       <div className="menu-icon" onClick={activeNav}>
         {!active ? (
-          <AiOutlineMenuFold className="menu" className="iconsvg" />
+          <AiOutlineMenuFold className="menu iconsvg" />
         ) : (
-          <IoMdClose className="close-icon" className="iconsvg" />
+          <IoMdClose className="close-icon iconsvg" />
         )}
       </div>
 

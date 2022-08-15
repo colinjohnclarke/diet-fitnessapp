@@ -1,4 +1,5 @@
 import React from "react";
+import GetMassivelogo from "../components/GetMassivelogo";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Liked from "../components/Liked";
@@ -22,7 +23,6 @@ function Searched() {
     console.log(searchedreipie);
   };
 
-  //hello
   return searchedreipie.map((item) => {
     return (
       <div className="animate__animated animate__heartBeat">

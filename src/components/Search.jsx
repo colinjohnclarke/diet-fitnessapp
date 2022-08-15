@@ -30,38 +30,31 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  width: 70%;
-  min-width: 150px;
+  width: 60%;
+  min-width: 130px;
   min-width: 70%;
-  min-height: 30px;
+  min-height: 20px;
   max-height: 40px;
-  height: 5%;
-  border: none;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   position: relative;
-  top: 20%;
+  top: 20;
   left: 15%;
-  background: white;
-  //   backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 
   input {
     background: white;
-    border-radius: 2rem;
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    font-family: "Abel", sans-serif;
+    font-size: 1rem;
     padding: 2%;
-    height: 10%;
+    height: 5%;
     width: 90%;
-    min-width: 70%;
-    min-height: 40px;
+    min-height: 30px;
     max-height: 30px;
-    border: none;
-    border-box: none;
-    border-radius: 1rem;
     text-align: left;
     position: relative;
     left: 12%;
-    top: 10%;
+    top: 15%;
     transition: all 0.2s ease-in-out;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;

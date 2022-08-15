@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import GetMassivelogo from "../components/GetMassivelogo";
 import { AiFillLike } from "react-icons/ai";
 
 import Liked from "../components/Liked";
@@ -10,10 +11,6 @@ import { NavLink } from "react-router-dom";
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
-
-  //   const likefn = () => {
-
-  //   }
 
   let params = useParams();
 
@@ -33,8 +30,8 @@ function Cuisine() {
   }, [params.type]);
 
   return (
-    <div>
-      <h2 className="cuisineh2"> Here are your recipies, enjoy!</h2>
+    <Wrapper>
+      <GetMassivelogo />
       <Grid className="griddiv">
         {cuisine.map((item) => {
           return (
@@ -46,44 +43,61 @@ function Cuisine() {
                 <img src={item.image} />
 
                 <div className="likeddiv">
-                  <h3>{item.title}</h3> <Liked />
+                  <h4>{item.title}</h4> <Liked />
                 </div>
               </NavLink>
             </Card>
           );
         })}
       </Grid>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  top: 30%;
+  h2 {
+  }
+`;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  grid-gap: 3rem;
+  grid-gap: 0.2rem;
 `;
 
 const Card = styled.div`
-padding: 3%; 
-img{ width: 100%; 
-  border-radius: 2rem; 
-  -webkit-box-shadow: 15px 21px 34px -22px rgba(0,0,0,0.58);
-  -moz-box-shadow: 15px 21px 34px -22px rgba(0,0,0,0.58);
-  box-shadow: 15px 21px 34px -22px rgba(0,0,0,0.58);
-}
+  padding: 1%;
+  img {
+    width: 100%;
+    border-radius: 1rem;
+    -webkit-box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
+    box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
+  }
 
-a{
-  text-direction: none; 
-
-}
-h3{text-align: center; 
-  padding; 3rem; 
-  font-size: 1.5rem
-
-
-}
-
-
+  a {
+    text-direction: none;
+  }
+  h4 {
+     position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 20%; 
+    transform: translate(-50%, 0%);
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 150.0%;
+    display-flex;
+    justify-content: center;
+    align-items: end;
+    text-shadow: 10px 10px 25px rgb(81,67,21),
+    -10px 10px 25px rgb(81,67,21),
+    -10px -10px 25px rgb(81,67,21),
+    10px -10px 25px rgb(81,67,21);
+  }
 `;
 
 export default Cuisine;

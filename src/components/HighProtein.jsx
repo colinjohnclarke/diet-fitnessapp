@@ -28,7 +28,7 @@ function HighProtein() {
 
   return (
     <Wrapper className="highProtein">
-      <h1 className="h1protein"> High Protein Recipies</h1>
+      <h2 className="h1protein"> High Protein Recipies</h2>
       <Splide
         className="splide"
         options={{
@@ -41,7 +41,7 @@ function HighProtein() {
         {protein.map((recipie) => {
           return (
             <SplideSlide className="proteindiv">
-              <Card className="card">
+              <Card key={recipie.id} className="card">
                 <NavLink to={"/recipie/" + recipie.id}>
                   <div>
                     <p className="paragraphprotein">{recipie.title}</p>
@@ -62,7 +62,7 @@ function HighProtein() {
 
 const Wrapper = styled.div`
   margin: 0%;
-  padding: 5%;
+  padding: 2%;
 
   // height: 500px;
   text-align: center;

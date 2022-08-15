@@ -5,6 +5,7 @@ import Cuisine from "./Cuisine";
 import Home from "./Home";
 import Searched from "./Searched";
 import Recipie from "./Recipie";
+import GetMassivelogo from "../components/GetMassivelogo";
 
 function Pages() {
   return (
