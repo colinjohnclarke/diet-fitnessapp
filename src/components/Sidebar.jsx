@@ -38,7 +38,7 @@ function Sidebar() {
         </li>
 
         <li className="lisidebar">
-          <Link to="/" className="shut">
+          <Link to="/fitness/" className="shut">
             <GiMuscleUp className="iconsvg" />
             <p className="textlink">Workouts</p>
           </Link>

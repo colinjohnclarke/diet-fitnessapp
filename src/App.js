@@ -5,6 +5,7 @@ import Category from "./components/Category";
 import { BrowserRouter } from "react-router-dom";
 import Search from "./components/Search";
 import Sidebar from "./components/Sidebar";
+
 // require("dotenv").config();
 
 function App() {

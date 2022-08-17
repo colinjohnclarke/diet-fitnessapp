@@ -6,17 +6,21 @@ import HealthFatsandProtein from "../components/HealthFatsandProtein";
 import GetMassivelogo from "../components/GetMassivelogo";
 import Search from "../components/Search";
 import ExerciseCategory from "../exericsecompoents/ExerciseCategory";
+import SearchExercise from "../components/exercise/SearchExercise";
+import Test from "../components/exercise/Test";
 
 function Home() {
   return (
     <div>
-      <GetMassivelogo />
+      <SearchExercise />
+      <Test />
+      {/* <GetMassivelogo />
+      <ExerciseCategory />
       <Search />
-      {/* <Category />
+      <Category />
       <HighProtein />
       <HealthFatsandProtein />
       <Popular /> */}
-      <ExerciseCategory />
     </div>
   );
 }
