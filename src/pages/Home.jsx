@@ -7,20 +7,19 @@ import GetMassivelogo from "../components/GetMassivelogo";
 import Search from "../components/Search";
 import ExerciseCategory from "../exericsecompoents/ExerciseCategory";
 import SearchExercise from "../components/exercise/SearchExercise";
-import Test from "../components/exercise/Test";
 
 function Home() {
   return (
     <div>
       <SearchExercise />
-      <Test />
-      {/* <GetMassivelogo />
+
+      <GetMassivelogo />
       <ExerciseCategory />
       <Search />
       <Category />
       <HighProtein />
       <HealthFatsandProtein />
-      <Popular /> */}
+      <Popular />
     </div>
   );
 }
