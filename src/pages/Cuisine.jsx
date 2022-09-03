@@ -30,7 +30,7 @@ function Cuisine() {
   }, [params.type]);
 
   return (
-    <Wrapper>
+    <Wrapper className="cuisineWrapper">
       <GetMassivelogo />
       <Grid className="griddiv">
         {cuisine.map((item) => {
@@ -55,49 +55,55 @@ function Cuisine() {
 }
 
 const Wrapper = styled.div`
+  margin: 0px;
+  padding: 5%;
   position: relative;
-  top: 30%;
+  left: 15%;
+
+  h1 {
+    position: absolute;
+    z-index: 10;
+    color: white;
+    width: 100%;
+    font-size: 2rem;
+    text-shadow: 10px 10px 25px rgb(81, 67, 21), -10px 10px 25px rgb(81, 67, 21),
+      -10px -10px 25px rgb(81, 67, 21), 10px -10px 25px rgb(81, 67, 21);
+    left: 10%;
+    top: 20%;
+    max-width: 70%;
+  }
+
   h2 {
   }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  grid-gap: 0.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 5rem;
 `;
 
 const Card = styled.div`
-  padding: 1%;
-  img {
-    width: 100%;
-    border-radius: 1rem;
-    -webkit-box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
-    -moz-box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
-    box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
-  }
+border: transparent;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+border-radius: 2rem;
+overflow: hidden;
+position: relative;
+width: 300px;
+height: 200px
 
-  a {
-    text-direction: none;
-  }
-  h4 {
-     position: absolute;
-    z-index: 10;
-    left: 50%;
-    top: 20%; 
-    transform: translate(-50%, 0%);
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-size: 150.0%;
-    display-flex;
-    justify-content: center;
-    align-items: end;
-    text-shadow: 10px 10px 25px rgb(81,67,21),
-    -10px 10px 25px rgb(81,67,21),
-    -10px -10px 25px rgb(81,67,21),
-    10px -10px 25px rgb(81,67,21);
-  }
+
+
+
+img {
+  border-radius: 2rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+
 `;
 
 export default Cuisine;

@@ -33,8 +33,8 @@ const FormStyle = styled.form`
   width: 60%;
   min-width: 130px;
   min-width: 70%;
-  min-height: 20px;
-  max-height: 40px;
+  min-height: 10px;
+  max-height: 25px;
   border-radius: 0.5rem;
   position: relative;
   top: 20;
@@ -47,10 +47,9 @@ const FormStyle = styled.form`
     font-family: "Abel", sans-serif;
     font-size: 1rem;
     padding: 2%;
-    height: 5%;
     width: 90%;
-    min-height: 30px;
-    max-height: 30px;
+    min-height: 10px;
+    max-height: 25px;
     text-align: left;
     position: relative;
     left: 12%;

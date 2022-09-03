@@ -14,7 +14,7 @@ function HealthFatsandProtein() {
   const getFat = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&minFat=30&maxFat=100&number=9&apiKey=34773bf69ba4400ca1a7519df1cee892`
+        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&minFat=30&maxFat=100&number=9&apiKey=32c51f21cf4a49969813db2ecdaebdf4`
       );
       const data = await response.json();
       setFat(data);
@@ -61,52 +61,46 @@ function HealthFatsandProtein() {
 }
 
 const Wrapper = styled.div`
+  width: 100%;
   margin: 0%;
-  padding: 5%;
-
-  // height: 500px;
   text-align: center;
-  h2 {
-     margin: 0;
-    padding: 0;
-    color: white;
-
-    text-decoration: underline #00adb5; 4px
-   
-    text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
-      0px -5px 35px rgba(255, 255, 255, 0.3);
-  }
+  padding: 5%;
 `;
 
 const Card = styled.div`
 border: transparent; 
-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   min-height: 15rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
-  margin: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 0.5rem; 
+  margin-right: 0.5rem; 
+ 
 
   img {
     border-radius: 2rem;
     position: absolute;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100%; 
     object-fit: cover;
     
   }
+
 
   p {
     position: absolute;
     z-index: 10;
     left: 50%;
-    bottom: 10%;
+    top: 25%;
     transform: translate(-50%, 0%);
     color: white;
     width: 100%;
     text-align: center;
-    font-size: 200.0%;
+    font-size: 135.0%;
     display-flex;
     justify-content: center;
     align-items: end;

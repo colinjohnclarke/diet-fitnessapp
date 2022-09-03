@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import { GiCook, GiMuscleUp } from "react-icons/gi";
+import { GiCook, GiMuscleUp, GiNewspaper } from "react-icons/gi";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -31,7 +31,7 @@ function Sidebar() {
           </Link>
         </li>
         <li className="lisidebar">
-          <Link to="/" className="shut">
+          <Link to="/recipies/" className="shut">
             <GiCook className="iconsvg" />
             <p className="textlink">Recipies</p>
           </Link>
@@ -41,6 +41,12 @@ function Sidebar() {
           <Link to="/fitness/" className="shut">
             <GiMuscleUp className="iconsvg" />
             <p className="textlink">Workouts</p>
+          </Link>
+        </li>
+        <li className="lisidebar">
+          <Link to="/news/" className="shut">
+            <GiNewspaper className="iconsvg" />
+            <p className="textlink">News</p>
           </Link>
         </li>
       </ul>

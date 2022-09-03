@@ -11,36 +11,36 @@
 a:hover {
   transform: translateY(5px);
   transition: 0.5s;
-  background-color: var(--main-bg-color);
 }
 
 .shut:hover {
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 39px 4px;
-  background-color: var(--main-bg-color);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .textlink:hover {
   color: rgba(73, 49, 49, 0.986);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 body {
-  font-family: "Teko", sans-serif;
+  font-family: "Kanit", sans-serif;
   margin: 0px;
   padding: 0px;
   height: 100vh;
   width: 100vw;
+  max-width: 100vw;
+  background: rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  background: rgb(255, 255, 255);
   background: linear-gradient(
-    265deg,
-    rgba(75, 74, 74, 0.8828125) 0%,
-    rgba(63, 63, 64, 1) 55%,
-    rgba(53, 52, 52, 1) 100%,
-    rgba(57, 56, 57, 0.7203475140056023) 100%,
-    rgba(51, 50, 50, 0.9892550770308123) 100%
+    284deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 43%
   );
 }
 
 h1 h2 h3 h4 p {
-  color: white;
+  color: rgb(236, 227, 227) !important;
 }
 
 .header {
@@ -51,7 +51,8 @@ h1 h2 h3 h4 p {
   z-index: 10;
   flex-direction: column;
   height: 100vh;
-  width: 50vw;
+  width: 60vw;
+  max-width: 400px;
   background: rgb(0, 255, 235);
   background: linear-gradient(
     252deg,
@@ -77,8 +78,8 @@ h1 h2 h3 h4 p {
   flex-direction: column;
   height: 100vh;
   width: 10vw;
-  min-width: 10vw;
-  max-width: 60px;
+  min-width: 35px;
+  max-width: 50px;
   background: rgb(0, 255, 235);
   background: linear-gradient(
     252deg,
@@ -94,6 +95,19 @@ h1 h2 h3 h4 p {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+.recipiesDiv {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .header-mobile {
+    width: 3vw;
+  }
+}
+
 .menu-icon {
   display: flex;
   align-items: center;
@@ -102,10 +116,9 @@ h1 h2 h3 h4 p {
 
 .menu-icon:hover {
   transition: 0.5s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   background-color: rgb(88, 187, 31);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 /* .close-icon .iconsvg {
@@ -116,6 +129,7 @@ h1 h2 h3 h4 p {
 
 .closed:hover {
   color: coral;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .open .textlink {
@@ -179,6 +193,7 @@ h1 h2 h3 h4 p {
 
 .shut:hover {
   background-color: black;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 /* .open .oicon .textlink {
@@ -201,7 +216,7 @@ h1 h2 h3 h4 p {
 
 .icon:hover {
   transition: 0.5s;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   transform: translateY(3px);
 }
 
@@ -226,13 +241,22 @@ h3 {
   }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (min-width: 600px) {
   .griddiv {
-    padding: 15%;
     position: relative;
-    left: 7%;
+    left: 40%;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)) !important;
+    max-width: 500px;
   }
-}
+} */
+
+/* @media screen and (min-width: 690px) {
+  .griddiv {
+    position: relative;
+    left: 60% !important;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr)) !important;
+  }
+} */
 
 @media screen and (max-width: 600px) {
   .proteindiv {
@@ -245,23 +269,29 @@ h3 {
   .splide {
     position: relative;
     margin: 0;
-    left: 32px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .highProtein {
-    text-align: center;
-    position: relative;
-  }
+.splide__list {
+  padding: 2% !important;
+}
+
+.highProtein {
+  position: relative;
+  max-width: 600px;
 }
 
 @media screen and (max-width: 600px) {
   .h1protein {
     position: relative;
     left: 20px;
-    margin: 1%;
   }
+}
+
+.cuisineWrapper {
+  padding: 0;
+  position: relative;
+  right: 10% !important;
 }
 
 /* @media screen and (max-width: 600px) {
@@ -291,9 +321,9 @@ h3 {
 }
 
 .categoryicon {
-  height: 50px;
-  width: 100px;
-  color: rgb(56, 55, 55);
+  height: 40px;
+  width: 80px;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -351,6 +381,7 @@ h3 {
   cursor: grabbing;
   position: relative;
   transition: 0.2s;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .formcss {
@@ -359,19 +390,43 @@ h3 {
 }
 
 .searchsvg {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   position: absolute;
   z-index: 2;
-  color: white;
-  top: 20%;
+  color: rgb(0, 0, 0);
+  top: 30%;
   left: 2%;
+}
+
+@media screen and (min-width: 600px) {
+  .searchsvg {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 38%;
+    left: 5%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .searchsvg {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 40%;
+    left: 5%;
+  }
 }
 
 .recipie_btn:hover {
   transform: translateY(5px);
   transition: 0.5s;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 39px 4px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .splide {
@@ -381,21 +436,32 @@ h3 {
 }
 
 .splide__arrow {
-  background: lightblue !important;
+  background: turquoise !important;
 }
 
 .splide__arrow--prev {
-  background: lightblue !important;
+  background: turquoise !important;
 }
 
 .splide__pagination__page {
-  background: grey !important;
+  background: turquoise !important;
 }
 
 .splide__pagination__page.is-active {
-  background: lightblue !important;
+  background: turquoise !important;
 }
 
-.filterexercisesearch {
-  background-color: green;
+@media screen and (min-width: 600px) {
+  .SearchExerciseWrapper {
+    position: relative;
+    left: 11% !important;
+    display: flex;
+    flex-direction: column !important;
+    max-width: 80vw !important;
+  }
+}
+
+.form_group {
+  padding: 0%;
+  margin: 0%;
 }

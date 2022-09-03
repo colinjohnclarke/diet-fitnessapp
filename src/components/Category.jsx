@@ -8,48 +8,48 @@ import { GiFlatfish, GiTomato, GiCakeSlice } from "react-icons/gi";
 function Category() {
   return (
     <Wrapper>
-      <h2> Quick links </h2>
+      <h2> Quick links: Food </h2>
       <div className="categorydiv animate__animated animate__heartBeat">
         <List className="listdiv">
           <NavLink to={"/cuisine/Chicken"}>
             <Categorydiv className="icon">
-              <h3>Chicken</h3>
               <GiChickenOven className="categoryicon" />
+              <h3>Chicken</h3>
             </Categorydiv>
           </NavLink>
 
           <NavLink to={"/cuisine/Beef"}>
             <Categorydiv className="icon">
-              <h3>Beef</h3>
               <GiCow className="categoryicon" />
+              <h3>Beef</h3>
             </Categorydiv>
           </NavLink>
 
           <NavLink to={"/cuisine/Fish"}>
             <Categorydiv className="icon">
-              <h3>Fish</h3>
               <GiFlatfish className="categoryicon" />
+              <h3>Fish</h3>
             </Categorydiv>
           </NavLink>
 
           <NavLink to={"/cuisine/Lamb"}>
             <Categorydiv className="icon">
-              <h3>Lamb</h3>
               <GiGoat className="categoryicon" />
+              <h3>Lamb</h3>
             </Categorydiv>
           </NavLink>
 
           <NavLink to={"/cuisine/Vegetarian"}>
             <Categorydiv className="icon">
-              <h3>Veggie</h3>
               <GiTomato className="categoryicon" />
+              <h3>Veggie</h3>
             </Categorydiv>
           </NavLink>
 
           <NavLink to={"/cuisine/Vegetarian"}>
             <Categorydiv className="icon">
-              <h3>Health Desert</h3>
               <GiCakeSlice className="categoryicon" />
+              <h3>Health Desert</h3>
             </Categorydiv>
           </NavLink>
         </List>
@@ -63,8 +63,8 @@ const Wrapper = styled.div`
     top: 10px; 
     left: 14px; 
     margin: 0;
-    padding: 0;
-    color: white;
+    padding: 3%;
+    color: black;
     text-align: center; 
     text-decoration: underline #00adb5; 4px
     text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
@@ -78,18 +78,15 @@ const List = styled.div`
   align-items: center;
   word-wrap: wrap;
   position: relative;
-  left: 5%;
-  color: rgb(56, 55, 55);
-
-  // width: 100%;
+  left: 14%;
+  color: white;
+  width: 80%;
 `;
 
 const Categorydiv = styled.div`
-  // min-width: 5rem;
-  // min-height: 5rem;
-  height: 6rem;
-  width: 6rem;
-  border: transparent;
+ 
+  height: 5rem;
+  width: 5rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -101,9 +98,19 @@ const Categorydiv = styled.div`
   );
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   text-decoration: none;
+  font-size: 1rem;
+  text-align: center;
+  color: white; 
+  text-decoration: none;
+
+  h3{
+
+   
+  }
 
   a {
     text-decoration: none;
+    
   }
 `;
 
