@@ -44,15 +44,15 @@ function SearchExercise() {
 // `;
 
 const FormStyle = styled.form`
-  width: 30%;
+  width: 20%;
   min-width: 130px;
   min-width: 70%;
   min-height: 10px;
   max-height: 25px;
   border-radius: 0.5rem;
   position: relative;
-  top: 20;
-  left: 15%;
+  margin-top: 20px;
+  margin-left: 20px;
   backdrop-filter: blur(10px);
 
   input {
@@ -61,16 +61,17 @@ const FormStyle = styled.form`
     font-family: "Abel", sans-serif;
     font-size: 1rem;
     padding: 2%;
-    width: 90%;
+    width: 80%;
     min-height: 10px;
     max-height: 25px;
     text-align: left;
     position: relative;
-    left: 12%;
+    left: 20vw;
     top: 15%;
     transition: all 0.2s ease-in-out;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px,
+      rgba(0, 0, 0, 0.22) 0px 8px 10px;
+    border: 1px solid turquoise;
   }
 `;
 

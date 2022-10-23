@@ -12,15 +12,17 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function SearchedExercise() {
   const [searchedexercise, setSearchedExercise] = useState([]);
   const [equipmentfilterselection, setEquipmentFilterSelection] = useState("");
   const [filteredbyequipment, setFilteredbyEquipment] = useState([]);
+  const [storedsearch, setStoredSearch] = useState([]);
 
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 10;
+  const exercisesPerPage = 12;
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -38,6 +40,7 @@ function SearchedExercise() {
   // Equipment filter handler
 
   const handlefilterChange = (event) => {
+    // getSearchedExerise(params.type);
     console.log("handlefilterChange handler clicked");
     setEquipmentFilterSelection(event.target.value);
   };
@@ -53,34 +56,12 @@ function SearchedExercise() {
     console.log("filtered arraY", equipmentfilterselection, searchedexercise);
   }, [equipmentfilterselection]);
 
-  // BodyPart filter handler
-
-  // const handlebodypartfilterChange = (event) => {
-  //   console.log("handlebodypartfilterChange handler clicked");
-  //   setEquipmentbodypartSelection(event.target.value);
-  // };
-  //
-
-  // useEffect(() => {
-  //   console.log("equipment filter selected:", filterbodypartselection);
-  //   const newBodypartfilterdarray = () => {
-  //     searchedexercise.filter((item) =>
-  //       item.bodyPart.toLowerCase().includes(filterbodypartselection)
-  //     );
-  //     setSearchedExercise(newBodypartfilterdarray);
-  //     console.log(
-  //       "filtered bodypart arraY",
-  //       filterbodypartselection,
-  //       searchedexercise
-  //     );
-  //   };
-  // }, [filterbodypartselection]);
-
   //  filter reset handler. recall api search from params
 
   const resfilteretHandler = () => {
     getSearchedExerise(params.type);
     console.log("params type is;", params.type);
+    console.log("resfilteretHandler clicked");
   };
 
   /// use params from search function
@@ -120,16 +101,34 @@ function SearchedExercise() {
     );
 
     setSearchedExercise(paramsfilter);
+
     console.log("filtered array,", searchedexercise);
   };
 
+  // filtereset handler
+
   return (
-    <div className="animate__animated animate__heartBeat">
+    <Main>
+      <Loading>
+        {searchedexercise.length === 0 && (
+          <div>
+            <Stack sx={{ width: "100%" }} spacing={2}>
+              <LinearProgress color="primary" />
+            </Stack>
+            <Stack sx={{ width: "100%" }} spacing={2}>
+              <LinearProgress color="primary" />
+            </Stack>
+            <Stack sx={{ width: "100%" }} spacing={2}>
+              <LinearProgress color="primary" />
+            </Stack>
+          </div>
+        )}
+      </Loading>
       <Wrapper className="SearchExerciseWrapper">
         <SearchExercise />
         {/* <h1>{filterbodypartselection}</h1> */}
 
-        <h1>Selected Exercise: {params.type}</h1>
+        <h2>Selected Exercise: {params.type}</h2>
         {/* drop down form for filter by equipment */}
         <FormControl sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="demo-simple-select-label">
@@ -176,29 +175,36 @@ function SearchedExercise() {
           Reset Filter
         </Button>
 
+        {searchedexercise.length === 0 && <h1> No Exercises found</h1>}
+
         {/* map of exercises that have been searched and filtered */}
         <Grid>
           {currentExercises.map((exercise) => {
             return (
-              <Card className="searchExerciseCard" key={exercise.id}>
-                <TextWrapper>
-                  <h4>Name: {exercise.name}</h4>
-                  <h4>
-                    Bodypart: {exercise.bodyPart}( {exercise.target})
-                  </h4>
-                  <h4>Equipment: {exercise.equipment}</h4>
-                </TextWrapper>
-                <img src={exercise.gifUrl}></img>
-              </Card>
+              <NavLink to={"/exercise/" + exercise.id}>
+                <Card className="searchExerciseCard" key={exercise.id}>
+                  <TextWrapper>
+                    <h4> NAME: {exercise.name}</h4>
+                    <h4>
+                      BODYPART: {exercise.bodyPart}( {exercise.target})
+                    </h4>
+                    <h4>EQUIPMENT: {exercise.equipment}</h4>
+                    <img src={exercise.gifUrl}></img>
+                  </TextWrapper>
+                </Card>
+              </NavLink>
             );
           })}
         </Grid>
+
         <Stack
           direction="row"
           spacing={2}
           sx={{ gap: { lg: "110px", xs: "50px" } }}
           flexWrap="wrap"
           justifyContent="center"
+          paddingTop={7}
+          paddingBottom={5}
         >
           {searchedexercise.length > 9 && (
             <Pagination
@@ -214,7 +220,7 @@ function SearchedExercise() {
           )}
         </Stack>
       </Wrapper>
-    </div>
+    </Main>
   );
 }
 
@@ -226,49 +232,101 @@ background-color: green;
 
 const TextWrapper = styled.div`
   border-radius: 1rem;
+
+  // @media (max-width: 600px) {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
 `;
 
 const Wrapper = styled.div`
   min-width: 250px;
-  max-width: 85vw;
-  // max-width: 1000px;
+  max-width: 100vw;
   position: relative;
-  left: 12%;
+  margin-left: 40px;
+
+  @media (max-width: 450px) {
+    margin-left: 50px;
+  }
+
+  @media (min-width: 600px) {
+    margin-left: 15px;
+  }
 `;
 
 const Grid = styled.div`
+  position: relative;
+  top: 20px;
+  right: 10px;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-gap: 0.2rem;
-`;
 
-const Card = styled.div`
-  margin: 5%;
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3%;
-  margin: 3%;
-  background-color: grey;
-  border-radius: 1rem;
+  @media (min-width: 480px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+  }
 
-  img {
-    width: 80%;
-    border-radius: 1rem;
-    box-shadow: 15px 21px 34px -22px rgba(0, 0, 0, 0.58);
+  @media (min-width: 830px) {
+    padding
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
   }
 
   a {
-    text-direction: none;
+    text-decoration: none;
+  }
+`;
+
+const Card = styled.div`
+  padding: 3%;
+  min-width: 150px;
+  min-height: 200px;
+  max-width: 400px;
+  margin: 4%;
+  border: 1px solid turquoise;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+  img {
+    position: relative;
+    left: 20px;
+    border-radius: 2rem;
+    width: 90%;
+    @media (max-width: 400px) {
+      display: flex;
+      justify-content: center;
+      width: 40%;
+    }
+    @media (min-width: 470px) {
+      display: flex;
+      justify-content: center;
+      width: 70%;
+    }
+
+    
+  }
+
+  a {
+    text-decoration: none;
   }
   h4 {
-    color: white;
-    text-shadow: 10px 10px 25px rgb(81, 67, 21), -10px 10px 25px rgb(81, 67, 21),
-      -10px -10px 25px rgb(81, 67, 21), 10px -10px 25px rgb(81, 67, 21);
-    font-size: 16px;
+    color: black;
+    font-weight: bold;
   }
+`;
+
+const Loading = styled.div`
+  width: 100%;
+`;
+
+const Main = styled.div`
+  margin-top: 10px;
+  width: 100%;
 `;
 
 export default SearchedExercise;

@@ -14,7 +14,7 @@ function HighProtein() {
   const getProtein = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&maxProtein=100&number=9&apiKey=32c51f21cf4a49969813db2ecdaebdf4`
+        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&maxProtein=100&number=20&apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
       );
       const data = await response.json();
       setProtein(data);
@@ -64,15 +64,11 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0%;
   text-align: center;
-  // padding: 1%;
-  h2 {
-    padding: 0%;
-  }
 `;
 
 const Card = styled.div`
 border: transparent; 
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
   min-height: 15rem;
   border-radius: 2rem;
   overflow: hidden;
@@ -81,6 +77,8 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 3rem;
   margin-left: 0.5rem; 
   margin-right: 0.5rem; 
+  border-right: 1px solid turquoise;
+  border-bottom: 1px solid turquoise;
  
 
   img {

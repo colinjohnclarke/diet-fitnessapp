@@ -1,6 +1,9 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { Stack } from "@mui/system";
+import Pagination from "@mui/material/Pagination";
 
 // export const Exerciseoptions = {
 //   method: "GET",
@@ -13,7 +16,6 @@ import { NavLink } from "react-router-dom";
 function ExerciseCategory() {
   return (
     <Wrapper>
-      <h2> Quick Links: Exercise</h2>
       <List className="listdiv">
         <NavLink to={"/bodypart/chest"}>
           <Categorydiv className="icon">
@@ -34,7 +36,7 @@ function ExerciseCategory() {
             <h3>Back</h3>
           </Categorydiv>
         </NavLink>
-        <NavLink to={"/bodypart/Abs"}>
+        <NavLink to={"/bodypart/waist"}>
           <Categorydiv className="icon">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-PpInxtmIepcgpDm-wDaJMNxzbg-pZxs3RA&usqp=CAU"
@@ -44,7 +46,7 @@ function ExerciseCategory() {
           </Categorydiv>
         </NavLink>
 
-        <NavLink to={"/fitness/bodypart/legs"}>
+        <NavLink to={"/bodypart/upper legs"}>
           <Categorydiv className="icon">
             <img
               src="data:image/jpeg;base64,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"
@@ -59,6 +61,22 @@ function ExerciseCategory() {
 }
 
 const Wrapper = styled.div`
+max-width: 1200px; 
+
+margin-left: 8%; 
+@media (max-width:400px){
+margin-top: 8%; 
+margin-bottom: 5%; }
+
+
+@media (min-width:400px){
+  margin-top: 8%; 
+  margin-bottom: 5%; }
+
+@media (min-width:700px){
+  margin-top: 6%; 
+  margin-bottom: 3%; }
+
 
 img{
   height: 2.5rem; 
@@ -67,10 +85,8 @@ img{
 
 h2 {
   position: relative; 
-  top: 5px; 
-  left: 35px; 
+  top: 10px; 
   margin: 0;
-  padding: 3%;
   color: black;
   text-align: center; 
   text-decoration: underline #00adb5; 4px
@@ -81,7 +97,6 @@ h2 {
   h3 {
     position: relative; 
     top: 3px; 
-    left: 2px; 
     margin: 0;
     padding: 0;
     color: white;
@@ -98,7 +113,7 @@ const List = styled.div`
   align-items: center;
   word-wrap: wrap;
   position: relative;
-  left: 4%;
+  // left: 4%;
   color: rgb(56, 55, 55);
 
   // width: 100%;

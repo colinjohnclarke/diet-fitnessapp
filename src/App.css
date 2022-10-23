@@ -1,7 +1,3 @@
-:root {
-  --main-bg-color: rgb(88, 187, 31);
-}
-
 .card:hover {
   transform: translateY(5px);
   transition: 0.5s;
@@ -13,8 +9,18 @@ a:hover {
   transition: 0.5s;
 }
 
+button:active {
+  transform: translateY(5px);
+  transition: 0.5s;
+}
+
 .shut:hover {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  background-color: black;
+}
+
+.shut {
+  text-decoration: none;
 }
 
 .textlink:hover {
@@ -50,7 +56,7 @@ h1 h2 h3 h4 p {
   position: fixed;
   z-index: 10;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 60vw;
   max-width: 400px;
   background: rgb(0, 255, 235);
@@ -76,7 +82,7 @@ h1 h2 h3 h4 p {
   position: fixed;
   z-index: 10;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 10vw;
   min-width: 35px;
   max-width: 50px;
@@ -114,11 +120,14 @@ h1 h2 h3 h4 p {
   justify-content: center;
 }
 
+.iconsvg {
+  transform: rotate(360deg);
+}
+
 .menu-icon:hover {
   transition: 0.5s;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  background-color: rgb(88, 187, 31);
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  background-color: black;
 }
 
 /* .close-icon .iconsvg {
@@ -134,6 +143,7 @@ h1 h2 h3 h4 p {
 
 .open .textlink {
   list-style: none;
+  text-decoration: none;
 }
 
 .open {
@@ -146,6 +156,7 @@ h1 h2 h3 h4 p {
   height: 100%;
   width: 100%;
   transition: 0.5s;
+  text-decoration: none;
 }
 
 .closed {
@@ -157,6 +168,7 @@ h1 h2 h3 h4 p {
   align-items: center;
   height: 100%;
   width: 100%;
+  text-decoration: none;
 }
 
 .iconsvg {
@@ -166,11 +178,13 @@ h1 h2 h3 h4 p {
 
 .textlink {
   color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 .closed .textlink {
   display: none;
   list-style: none;
+  text-decoration: none;
 }
 
 .lisidebar {
@@ -182,6 +196,7 @@ h1 h2 h3 h4 p {
   list-style: none;
   width: 100%;
   height: 30vh;
+  text-decoration: none;
 }
 
 .shut {
@@ -257,6 +272,9 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 2fr)) !important;
   }
 } */
+.splide {
+  max-width: 800px;
+}
 
 @media screen and (max-width: 600px) {
   .proteindiv {
@@ -268,23 +286,31 @@ h3 {
 @media screen and (max-width: 600px) {
   .splide {
     position: relative;
-    margin: 0;
+    margin-left: 8%;
   }
 }
 
-.splide__list {
-  padding: 2% !important;
+@media screen and (max-width: 900px) {
+  .splide {
+    position: relative;
+    margin-left: 8%;
+  }
 }
 
-.highProtein {
-  position: relative;
-  max-width: 600px;
+@media screen and (min-width: 900px) {
+  .splide {
+    position: relative;
+    margin-left: 7%;
+  }
 }
+
+/* .splide__list {
+  padding: 2% !important;
+} */
 
 @media screen and (max-width: 600px) {
   .h1protein {
     position: relative;
-    left: 20px;
   }
 }
 
@@ -396,6 +422,16 @@ h3 {
   z-index: 2;
   color: rgb(0, 0, 0);
   top: 30%;
+  left: 17%;
+}
+
+.recipiesearchsvg {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  z-index: 2;
+  color: rgb(0, 0, 0);
+  top: 30%;
   left: 2%;
 }
 
@@ -406,8 +442,68 @@ h3 {
     position: absolute;
     z-index: 2;
     color: rgb(0, 0, 0);
-    top: 38%;
-    left: 5%;
+    top: 55%;
+    left: 15%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .searchsvg {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 10px;
+    left: 100px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .searchsvg {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 10px;
+    left: 140px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .recipiesearchsvg {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 45%;
+    left: 8%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .recipiesearchsvg {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 40%;
+    left: 7%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .recipiesearchsvg {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 47%;
+    left: 10%;
   }
 }
 
@@ -419,7 +515,19 @@ h3 {
     z-index: 2;
     color: rgb(0, 0, 0);
     top: 40%;
-    left: 5%;
+    left: 160px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .searchsvg {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    top: 40%;
+    left: 220px;
   }
 }
 
@@ -430,9 +538,7 @@ h3 {
 }
 
 .splide {
-  width: 100%;
-  position: relative;
-  left: 5%;
+  width: 90%;
 }
 
 .splide__arrow {
@@ -454,7 +560,7 @@ h3 {
 @media screen and (min-width: 600px) {
   .SearchExerciseWrapper {
     position: relative;
-    left: 11% !important;
+    left: 13% !important;
     display: flex;
     flex-direction: column !important;
     max-width: 80vw !important;
@@ -464,4 +570,7 @@ h3 {
 .form_group {
   padding: 0%;
   margin: 0%;
+}
+
+.RecipieButton {
 }

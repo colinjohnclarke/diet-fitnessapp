@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { NavLink } from "react-router-dom";
-import "@splidejs/react-splide/css";
 
 function HealthFatsandProtein() {
   const [fat, setFat] = useState([]);
@@ -14,7 +13,7 @@ function HealthFatsandProtein() {
   const getFat = async () => {
     try {
       const response = await fetch(
-        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&minFat=30&maxFat=100&number=9&apiKey=32c51f21cf4a49969813db2ecdaebdf4`
+        `https://api.spoonacular.com/recipes/findByNutrients?&minProtein=30&minFat=30&maxFat=100&number=20&apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
       );
       const data = await response.json();
       setFat(data);
@@ -64,7 +63,15 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0%;
   text-align: center;
-  padding: 5%;
+
+  h2 {
+    @media (min-width: 400px) {
+      max-width: 300px;
+      text-align: center;
+
+      margin-left: 60px;
+    }
+  }
 `;
 
 const Card = styled.div`
@@ -78,6 +85,8 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 3rem;
   margin-left: 0.5rem; 
   margin-right: 0.5rem; 
+  border-right: 1px solid turquoise;
+  border-bottom: 1px solid turquoise;
  
 
   img {

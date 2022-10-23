@@ -16,7 +16,7 @@ function Search() {
 
   return (
     <FormStyle onSubmit={submitHandler}>
-      <AiOutlineSearch className="searchsvg" />
+      <AiOutlineSearch className="recipiesearchsvg" />
       <input
         placeholder="Search recipies"
         type="text"
@@ -30,16 +30,15 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  width: 60%;
+  width: 20%;
   min-width: 130px;
   min-width: 70%;
   min-height: 10px;
   max-height: 25px;
   border-radius: 0.5rem;
   position: relative;
-  top: 20;
-  left: 15%;
-  backdrop-filter: blur(10px);
+  top: 20%;
+  padding: 5%;
 
   input {
     background: white;
@@ -47,16 +46,18 @@ const FormStyle = styled.form`
     font-family: "Abel", sans-serif;
     font-size: 1rem;
     padding: 2%;
-    width: 90%;
+    width: 97%;
+    max-width: 800px;
     min-height: 10px;
     max-height: 25px;
     text-align: left;
     position: relative;
-    left: 12%;
+    left: 10%;
     top: 15%;
     transition: all 0.2s ease-in-out;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px,
+      rgba(0, 0, 0, 0.22) 0px 8px 10px;
+    border: 1px solid turquoise;
   }
 `;
 

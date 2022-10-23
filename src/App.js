@@ -6,6 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import Search from "./components/Search";
 import Sidebar from "./components/Sidebar";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import Logo from "./components/GetMassivelogo";
+import { useSelector } from "react-redux";
+import { selectUser } from "./components/features/Userslice";
+import { useState } from "react";
+import { FavouriteRecipieProvider } from "./components/FavouriteRecipiecontext";
 
 const theme = createTheme({
   palette: {
@@ -18,13 +23,16 @@ const theme = createTheme({
   },
 });
 
-// require("dotenv").config();
-
 function App() {
+  let user = useSelector(selectUser);
+  let userval = user.value;
+
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Sidebar />
+        <Logo />
+
+        {userval && <Sidebar />}
         <Pages />
       </BrowserRouter>
     </ThemeProvider>

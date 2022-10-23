@@ -16,7 +16,7 @@ function Cuisine() {
 
   const getCuisine = async (name) => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${name}&apiKey=34773bf69ba4400ca1a7519df1cee892&number=30`
+      `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${name}&apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}&number=30`
     );
     const recipies = await data.json();
     setCuisine(recipies);
@@ -31,7 +31,6 @@ function Cuisine() {
 
   return (
     <Wrapper className="cuisineWrapper">
-      <GetMassivelogo />
       <Grid className="griddiv">
         {cuisine.map((item) => {
           return (
