@@ -1,7 +1,16 @@
 import React from "react";
 
 function Favouriterecipies() {
+
+
+
+
+  
   return <div>Favouriterecipies</div>;
+
+
+
+
 }
 
 export default Favouriterecipies;

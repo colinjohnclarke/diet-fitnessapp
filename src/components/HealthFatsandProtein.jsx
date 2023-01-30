@@ -27,7 +27,10 @@ function HealthFatsandProtein() {
 
   return (
     <Wrapper className="highProtein">
-      <h2 className="h1protein"> Healthy Fat and high Protein Recipies</h2>
+      <h2 className="h1protein healtyfatsandhighprotein">
+        {" "}
+        Healthy Fat and high Protein Recipies
+      </h2>
       <Splide
         className="splide"
         options={{

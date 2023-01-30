@@ -19,7 +19,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Kanit",
+    fontFamily: "Didact Gothic",
   },
 });
 
@@ -33,6 +33,7 @@ function App() {
         <Logo />
 
         {userval && <Sidebar />}
+
         <Pages />
       </BrowserRouter>
     </ThemeProvider>

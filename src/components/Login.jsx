@@ -65,6 +65,8 @@ function Login() {
           Logout
         </Button>
       </Buttondiv>
+
+      <h3> We are still in dev so use any username to continue... :) </h3>
     </Wrapper>
   );
 }
@@ -75,6 +77,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  h3 {
+    margin: 5%;
+  }
 `;
 
 const Input = styled.input`

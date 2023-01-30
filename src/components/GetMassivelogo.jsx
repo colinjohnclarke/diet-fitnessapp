@@ -4,7 +4,7 @@ import FavouriteIcons from "./exercise/FavouriteIcons";
 
 function Logo() {
   return (
-    <Wrapper>
+    <Wrapper className="logowrapper">
       <h1>FitFood.co.uk</h1>
       <FavouriteIcons />
     </Wrapper>
@@ -15,9 +15,8 @@ const Wrapper = styled.div`
   height: 50px;
   width: 100%;
   position: relative; 
-  background-color: black; 
-  border-top: 2px solid #00ffeb;
-  border-bottom: 2px solid #00ffeb;
+  box-shadow: rgba(17, 12, 46, 0.15) 10px 48px 100px 0px;
+
   
 
   

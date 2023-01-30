@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { NavLink } from "react-router-dom";
 import "@splidejs/react-splide/css";
+import Stack from "@mui/material/Stack";
+import LinearProgress from "@mui/material/LinearProgress";
 
 function HighProtein() {
   const [protein, setProtein] = useState([]);
@@ -124,6 +126,10 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 
   }
 
+`;
+
+const Loading = styled.div`
+  width: 100%;
 `;
 
 export default HighProtein;
