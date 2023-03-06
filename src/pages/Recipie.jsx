@@ -6,10 +6,10 @@ import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
-import { createContext } from "react";
 
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import addrecipiefavourite from "../components/features/Favouriteslice";
+import { addrecipiefavourite } from "../components/features/Favouriteslice";
 
 function Recipie() {
   const [recipie, setRecipie] = useState([]);
@@ -17,11 +17,9 @@ function Recipie() {
   const [instuctionbuttonactive, setIntructionsButtonActive] = useState();
   const [ingredientsbuttonactive, setIngredientsButtonActive] = useState();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   let params = useParams();
-
-  let favourites = [];
 
   useEffect(() => {
     getRecipiefromclick(params.name);
@@ -36,23 +34,17 @@ function Recipie() {
       `https://api.spoonacular.com/recipes/${params.name}/information?&apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
     );
     let recipiedata = await response.json();
-    console.log(recipiedata);
+
     setRecipie(recipiedata);
-    console.log(`this is the recipie`, recipie);
-    let Recipiedata = recipiedata;
-    console.log("export this data", Recipiedata);
   };
 
-  const addfavouriteshandler = (recipie) => {
-    // dispatch(addrecipiefavourite(recipie));
-    console.log("addfavouriteshandler clicked");
-    favourites.push(recipie);
-    console.log("favourites", favourites);
+  const addfavouriteshandler = (e) => {
+    console.log("addfavouriteshandler clicked", recipie);
+    e.preventDefault();
+    dispatch(addrecipiefavourite(recipie.id));
   };
 
   return (
-    // cuisines, image, id, readyInMinutes, summary,title , weightWatcherSmartPoints, servings, instructions
-
     <Wrapper className="Wrapper_div">
       <Loading>
         {recipie.length === 0 && (
@@ -104,11 +96,9 @@ function Recipie() {
             size="10px"
             color="success"
             variant="contained"
-            onClick={() => {
-              addfavouriteshandler(recipie);
-            }}
+            onClick={addfavouriteshandler}
           >
-            <p>Add to favorites</p>
+            Add to favorites
           </Button>
         </Nav>
 
@@ -165,7 +155,7 @@ const Main = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative: 

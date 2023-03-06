@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import { Button } from "@mui/material";
 
-function News() {
+function Workouts() {
   const [news, setNews] = useState([]);
+  const [article, setArticle] = useState([]);
 
   useEffect(() => {
     getNews();
@@ -129,50 +131,50 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
-  text-align: center;
-  margin-top: 3%;
-  margin-left: 4%;
-  padding: 2%; 
-  border-radius: 2px;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid turquoise;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px; 
-    text-decoration: none; 
-
-    @media (min-width: 700px) {
-      min-height: 400px; 
-      // max-height: 400px; 
-    }
-    @media (min-width: 1000px) {
-      min-height: 600px; 
-      max-height: 700px; 
-    }
-
-    @media (min-width: 400px) {
-    //  max-width: 300px; 
-    margin-left: 20px; 
-    }
-
-
-  p{
-    text-overflow: ellipsis:
-    text-decoration: none; 
-  }
-
-
- 
-
-  img {
-    width: 100%;
-    // max-height: 300px;
-    object-fit: cover;
+    text-align: center;
+    margin-top: 3%;
+    margin-left: 4%;
+    padding: 2%; 
+    border-radius: 2px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid turquoise;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+      rgba(0, 0, 0, 0.22) 0px 15px 12px; 
+      text-decoration: none; 
   
-  }
-`;
+      @media (min-width: 700px) {
+        min-height: 400px; 
+        // max-height: 400px; 
+      }
+      @media (min-width: 1000px) {
+        min-height: 600px; 
+        max-height: 700px; 
+      }
+  
+      @media (min-width: 400px) {
+      //  max-width: 300px; 
+      margin-left: 20px; 
+      }
+  
+  
+    p{
+      text-overflow: ellipsis:
+      text-decoration: none; 
+    }
+  
+  
+   
+  
+    img {
+      width: 100%;
+      // max-height: 300px;
+      object-fit: cover;
+    
+    }
+  `;
 
 const Loading = styled.div`
   width: 100%;
@@ -197,5 +199,4 @@ const NavContainer = styled.nav`
     color: white;
   }
 `;
-
-export default News;
+export default Workouts;

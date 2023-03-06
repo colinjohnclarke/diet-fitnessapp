@@ -18,10 +18,10 @@ function Recipies() {
         <Search />
       </Searchdiv>
       <HighProtein />
-      <Popular />
+      {/* <Popular />
       <HealthFatsandProtein />
       <MinCaloroies />
-      <LowCalories />
+      <LowCalories /> */}
     </Wrapper>
   );
 }

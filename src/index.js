@@ -2,17 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { configureStore } from "@reduxjs/toolkit";
+import { store } from "./app/store";
 import { Provider } from "react-redux";
-import userReducer from "./components/features/Userslice";
-import favouriterecipieReducer from "./components/features/Favouriteslice";
-
-const store = configureStore({
-  reducer: {
-    favouriterecipie: favouriterecipieReducer,
-    user: userReducer,
-  },
-});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

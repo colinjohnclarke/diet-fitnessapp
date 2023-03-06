@@ -1,79 +1,84 @@
 import React from "react";
+import { useLoginMutation } from "./authApiSlice";
+import { useRef, useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "./features/UserSlice2";
-import Settings from "./Settings";
-import Logo from "../components/GetMassivelogo";
-import { useNavigate } from "react-router-dom";
+import { setCredentials } from "../auth/authSlice";
 
 function Login() {
+  const [login, { isLoading }] = useLoginMutation();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
-  // const newuser = { username, password, email };
-
-  const dispatch = useDispatch();
-
-  // const [addUser] = useAddUserMutation();
-
-  const loginHandler = () => {
-    // addUser(newuser);
-    dispatch(
-      login({
-        payload: { username, password, email, isloggedin: true },
-      })
-    );
-  };
-
-  const logouthandler = () => {
-    dispatch(
-      logout({
-        payload: { isloggedin: false },
-      })
-    );
-  };
+  const [errMsg, setErrMsg] = useState("");
+  const userRef = useRef();
+  const errRef = useRef();
 
   const navigate = useNavigate();
-  const registerhandler = () => {
-    navigate("/register");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [username, password]);
+
+  const handleUserInput = (e) => setUsername(e.target.value);
+  const handlePwdInput = (e) => setPassword(e.target.value);
+
+  const handleSubmit = async (e) => {
+    e.prventDeafault();
+
+    try {
+      const { accessToken } = await login({ username, password }).unwrap();
+      dispatch(setCredentials({ accessToken }));
+      setUsername("");
+      setPassword("");
+      navigate("/");
+    } catch (err) {
+      if (!err.status) {
+        setErrMsg("No Server Response");
+      } else if (err.status === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.status === 401) {
+        setErrMsg("Unauthorized");
+      } else {
+        setErrMsg(err.data?.message);
+      }
+      errRef.current.focus();
+    }
   };
 
   return (
     <Wrapper>
       <h1>Log In</h1>
-      <form onSubmit={loginHandler}>
+      <form onSubmit={handleSubmit}>
         <Input
           value={username}
           placeholder="Username"
           type="text"
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
+          onChange={handleUserInput}
         ></Input>
         <Input
           value={password}
+          onChange={handlePwdInput}
           placeholder="Password"
           type="password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
         ></Input>
 
         <Buttondiv>
           <Button type="submit" variant="contained" color="primary">
             Login
           </Button>
-          <Button onClick={logouthandler} variant="contained" color="primary">
+          <Button variant="contained" color="primary">
             Logout
           </Button>
-          <h3>First time here!? </h3>
-
-          <Button onClick={registerhandler} variant="contained" color="primary">
-            Register
-          </Button>
+          <Link to="/">Back to Home</Link>
         </Buttondiv>
       </form>
 

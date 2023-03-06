@@ -7,9 +7,10 @@ import styled from "styled-components";
 import ExerciseCategory from "../exericsecompoents/ExerciseCategory";
 import Login from "../components/Login";
 
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../components/features/Userslice";
+import { selectUser } from "../components/features/UserSlice2";
+import Users from "../components/Users";
+// import Login from "../components/features/api/Login";
 
 function Home() {
   let user = useSelector(selectUser);
@@ -20,11 +21,11 @@ function Home() {
       {userval ? (
         <div>
           <h3>Hello !</h3>
-          <ExerciseCategory />
+          {/* <ExerciseCategory />
           <Category />
           <HighProtein />
           <HealthFatsandProtein />
-          <Popular />
+          <Popular /> */}
         </div>
       ) : (
         <Login />

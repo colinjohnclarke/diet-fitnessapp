@@ -5,11 +5,15 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
+import { useDispatch } from "react-redux";
+import { addFavouriteExercise } from "../features/FavouriteExerciseSlice";
 
 function Exercise() {
   const [exercise, setExercise] = useState([]);
 
   let params = useParams();
+
+  const dispatch = useDispatch();
 
   const getExercise = async (name) => {
     try {
@@ -18,9 +22,9 @@ function Exercise() {
         newoptions
       );
       const data = await response.json();
-      console.log(params.id);
+      // console.log(params.id);
       setExercise(data);
-      console.log("selected exercise", exercise);
+      // console.log("data", data);
     } catch (err) {
       console.log(err);
     }
@@ -29,7 +33,7 @@ function Exercise() {
   const newoptions = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "c0122e8c44msh979a6d1e77700bbp13ce92jsn6336df6b62d3",
+      "X-RapidAPI-Key": "b771f19133msh110a0da829ffdcbp173199jsn9a994ff2278b",
       "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
     },
   };
@@ -37,6 +41,12 @@ function Exercise() {
   useEffect(() => {
     getExercise(params.id);
   }, [params.id]);
+
+  const addtoFavourtitesHandlerClicked = (e) => {
+    console.log("fav exercise handler clicked");
+    e.preventDefault();
+    dispatch(addFavouriteExercise(exercise));
+  };
 
   return (
     <Wrapper>
@@ -55,7 +65,9 @@ function Exercise() {
       )}
 
       <Card>
-        <Button variant="contained"> Add to Favourites </Button>
+        <Button onClick={addtoFavourtitesHandlerClicked} variant="contained">
+          Add to Favourites{" "}
+        </Button>
         <Exercisediv>
           <h1> {exercise.name}</h1>
           <h2> Equipment: {exercise.equipment}</h2>

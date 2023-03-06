@@ -1,16 +1,12 @@
 import React from "react";
 import "./App.css";
 import Pages from "./pages/Pages";
-import Category from "./components/Category";
 import { BrowserRouter } from "react-router-dom";
-import Search from "./components/Search";
 import Sidebar from "./components/Sidebar";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import Logo from "./components/GetMassivelogo";
 import { useSelector } from "react-redux";
-import { selectUser } from "./components/features/Userslice";
-import { useState } from "react";
-import { FavouriteRecipieProvider } from "./components/FavouriteRecipiecontext";
+import { selectUser } from "./components/features/UserSlice2";
 
 const theme = createTheme({
   palette: {
