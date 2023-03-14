@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 function FavouriteIcons() {
   // let userval = user.value;
-  const [fitcount, setfitCount] = useState(0);
+  // const [fitcount, setfitCount] = useState(0);
   const [foodcount, setfoodCount] = useState(0);
   const [fitcountselect, setFitcountselect] = useState(false);
   const [foocountselect, setfoodCountSelect] = useState(false);
@@ -17,21 +17,21 @@ function FavouriteIcons() {
   const [foodiconcolor, setFoodIconColor] = useState("");
   const [favouriteexerciseslength, setFavouriteexerciseslength] = useState(0);
 
-  let favouritesexericselengthfromstate = useSelector(
-    (state) => state.addFavouriteExerciseReducer.value.length
-  );
+  // let favouritesexericselengthfromstate = useSelector(
+  //   (state) => state.addFavouriteExerciseReducer.value.length
+  // );
 
-  const updateFavourites = () => {
-    setfitCount(favouritesexericselengthfromstate);
-    console.log(
-      "favouritesexericselengthfromstate",
-      favouritesexericselengthfromstate
-    );
-  };
+  // const updateFavourites = () => {
+  //   setfitCount(favouritesexericselengthfromstate);
+  //   console.log(
+  //     "favouritesexericselengthfromstate",
+  //     favouritesexericselengthfromstate
+  //   );
+  // };
 
-  useEffect(() => {
-    updateFavourites();
-  }, [favouritesexericselengthfromstate]);
+  // useEffect(() => {
+  //   updateFavourites();
+  // }, [favouritesexericselengthfromstate]);
 
   const fitcountselecthandler = () => {
     setFitcountselect(!fitcountselect);
@@ -56,9 +56,7 @@ function FavouriteIcons() {
         <NavLink onClick={fitcountselecthandler} to={"/favourites/exercises"}>
           <Fit>
             <IoIosFitness color={exerciseiconcolor} />
-            <Countfitness>
-              <h3>{fitcount}</h3>
-            </Countfitness>
+            <Countfitness>{/* <h3>{fitcount}</h3> */}</Countfitness>
           </Fit>
         </NavLink>
         <NavLink

@@ -4,20 +4,25 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import LinearProgress from "@mui/material/LinearProgress";
+import { useAddRecipieMutation } from "../components/features/api/recipiesSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-import { useDispatch } from "react-redux";
-// import addrecipiefavourite from "../components/features/Favouriteslice";
-import { addrecipiefavourite } from "../components/features/Favouriteslice";
+import LinearProgress from "@mui/material/LinearProgress";
+import Stack from "@mui/material/Stack";
 
 function Recipie() {
   const [recipie, setRecipie] = useState([]);
   const [active, setActive] = useState("Show_Instructions");
   const [instuctionbuttonactive, setIntructionsButtonActive] = useState();
   const [ingredientsbuttonactive, setIngredientsButtonActive] = useState();
+  const [user, setUser] = useState([]);
 
-  const dispatch = useDispatch();
+  const getuser = useSelector((state) => state.user.value.payload.username);
+
+  const [addRecipie, { isLoading, isSuccess, isError, error }] =
+    useAddRecipieMutation();
+
+  // const dispatch = useDispatch();
 
   let params = useParams();
 
@@ -34,33 +39,49 @@ function Recipie() {
       `https://api.spoonacular.com/recipes/${params.name}/information?&apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
     );
     let recipiedata = await response.json();
-
     setRecipie(recipiedata);
   };
 
-  const addfavouriteshandler = (e) => {
+  const addfavouriteshandler = async (event) => {
+    event.preventDefault();
     console.log("addfavouriteshandler clicked", recipie);
-    e.preventDefault();
-    dispatch(addrecipiefavourite(recipie.id));
+    await addRecipie({ name: params.name, user: `${getuser}` });
   };
+
+  const loadingContentbar = (
+    <div>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+    </div>
+  );
+  let content;
+
+  if (isLoading) {
+    content = (
+      <Loading>
+        <h3>Saving...</h3>
+        {loadingContentbar}
+      </Loading>
+    );
+  } else if (isError) {
+    content = <h1>Error try again...</h1>;
+  } else if (isSuccess) {
+    content = <h3>Saved to favourites...</h3>;
+    console.log("is Sucess", isSuccess);
+  } else if (error) {
+    console.log(error);
+  }
 
   return (
     <Wrapper className="Wrapper_div">
-      <Loading>
-        {recipie.length === 0 && (
-          <div>
-            <Stack sx={{ width: "100%" }} spacing={2}>
-              <LinearProgress color="primary" />
-            </Stack>
-            <Stack sx={{ width: "100%" }} spacing={2}>
-              <LinearProgress color="primary" />
-            </Stack>
-            <Stack sx={{ width: "100%" }} spacing={2}>
-              <LinearProgress color="primary" />
-            </Stack>
-          </div>
-        )}
-      </Loading>
+      <Loading>{recipie.length === 0 && loadingContentbar}</Loading>
       <Main>
         <Nav>
           <Button
@@ -101,6 +122,7 @@ function Recipie() {
             Add to favorites
           </Button>
         </Nav>
+        <div> {content}</div>
 
         {active === "Show_Instructions" && (
           <Instructions>

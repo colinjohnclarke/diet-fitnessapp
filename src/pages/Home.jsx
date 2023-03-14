@@ -21,11 +21,12 @@ function Home() {
       {userval ? (
         <div>
           <h3>Hello !</h3>
+
           {/* <ExerciseCategory />
-          <Category />
+          <Category /> */}
           <HighProtein />
-          <HealthFatsandProtein />
-          <Popular /> */}
+          {/* <HealthFatsandProtein />
+          <Popular />  */}
         </div>
       ) : (
         <Login />
