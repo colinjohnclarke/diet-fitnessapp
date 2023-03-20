@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { MdDeleteForever } from "react-icons/md";
 
 import Button from "@mui/material/Button";
 import LinearProgress from "@mui/material/LinearProgress";
@@ -27,21 +28,21 @@ function Favouriterecipies() {
 
   // const [deleteRecipie] = useDeleteRecipieMutation();
 
-  const deleteRecipeHandler = async () => {
-    // console.log("delete recipie id number:", id);
-    // await deleteRecipie({ id });
-  };
+  // const deleteRecipeHandler = async () => {
+  //   // console.log("delete recipie id number:", id);
+  //   // await deleteRecipie({ id });
+  // };
 
-  useEffect(
-    (id) => {
-      deleteRecipeHandler();
-    },
-    [id]
-  );
+  // useEffect(
+  //   (id) => {
+  //     deleteRecipeHandler();
+  //   },
+  //   [id]
+  // );
 
   let content;
 
-  console.log("DATA", data);
+  console.log("DATA", data.recipies);
 
   useEffect(() => {
     const promises = data.recipies.map(async (item) => {
@@ -62,11 +63,13 @@ function Favouriterecipies() {
       console.log("recipiesarr", recipiesarr);
       setRecipies(recipiesarr);
     });
+
+    console.log(result);
   }, [data]);
 
   return (
     <div>
-      {recipies.map((item) => {
+      {data.recipies.map((item) => {
         return (
           <Wrapper>
             <h1>{item.title}</h1>
@@ -81,7 +84,8 @@ function Favouriterecipies() {
               }}
               variant="contained"
             >
-              Delete
+              {" "}
+              {/* <MdDeleteForever /> */}
             </Button>
           </Wrapper>
         );
@@ -94,6 +98,7 @@ export default Favouriterecipies;
 
 const Wrapper = styled.div`
 border: 2px solid; 
+color: white; 
 display: flex; 
 flex-direction: column; 
 justify-content: center; 
@@ -102,23 +107,20 @@ align-items: center;
   width: 80%;
   padding: 5%;
   margin: 5%;
-  position: relative: 
 
   img{
-    height: 300px; 
-    width: 300px; 
-border-radius: 10px; 
-    position: absolute; 
-    z-index: -10; 
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    
-
+height: 100px; 
+width: 100px; 
+position: absolute; 
+z-index: -1; 
+  
   }
+  
 h1{
   text-align: center; 
   position: absolute: 
   z-index: 2; 
-  color: black; 
+  color: white; 
 }
 
 `;

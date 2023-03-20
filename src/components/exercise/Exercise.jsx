@@ -5,8 +5,6 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
-// import { useDispatch } from "react-redux";
-// import { addFavouriteExercise } from "../features/FavouriteExerciseSlice";
 import { useAddExerciseMutation } from "../features/api/exerciseSlice";
 
 function Exercise() {
@@ -16,8 +14,6 @@ function Exercise() {
 
   const [addExercise, { isLoading, isSuccess, isError, error }] =
     useAddExerciseMutation();
-
-  // const dispatch = useDispatch();
 
   const getExercise = async (name) => {
     try {
@@ -61,8 +57,39 @@ function Exercise() {
     });
   };
 
+  const loadingContentbar = (
+    <div>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <LinearProgress color="primary" />
+      </Stack>
+    </div>
+  );
+  let content;
+
+  if (isLoading) {
+    content = (
+      <Loading>
+        {loadingContentbar}
+        <h3>Saving...</h3>
+      </Loading>
+    );
+  } else if (isError) {
+    content = <h1>Error try again...</h1>;
+  } else if (isSuccess) {
+    content = <h3>Saved to favourites...</h3>;
+    console.log("is Sucess", isSuccess);
+  } else if (error) {
+    console.log(error);
+  }
   return (
     <Wrapper>
+      <div> {content}</div>
       {exercise.length === 0 && (
         <Stackdiv>
           <Stack sx={{ width: "100%" }} spacing={2}>
@@ -148,7 +175,14 @@ const Card = styled.div`
 
 const Stackdiv = styled.div`
   position: relative;
-  margin-top: 10px;
+`;
+
+const Loading = styled.div`
+  width: 100%;
+
+  h3 {
+    padding: 20%;
+  }
 `;
 
 const Exercisediv = styled.div``;

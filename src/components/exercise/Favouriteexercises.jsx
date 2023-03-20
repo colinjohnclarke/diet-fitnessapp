@@ -7,25 +7,33 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 
-import { deleteFavouriteExercise } from "../features/FavouriteExerciseSlice";
+import { useGetExercisesQuery } from "../features/api/exerciseSlice";
 
 function Favouriteexercises() {
   const [exercisesnum, setExercisesnum] = useState([]);
+  const [exercisearr, setExercisesarr] = useState([]);
 
-  const dispatch = useDispatch();
+  const { data, isLoading, isSuccess, isError, error } = useGetExercisesQuery();
 
-  const favourites = useSelector(
-    (state) => state.addFavouriteExerciseReducer.value
-  );
+  console.log("jkdjsk", data);
+  // const favourites = useSelector(
+  //   (state) => state.addFavouriteExerciseReducer.value
+  // );
 
-  let exerciselistlength = favourites.length;
-  console.log("num:", exerciselistlength);
-  // setExercises(favourites);
+  // let exerciselistlength = data.exercises;
 
-  console.log(favourites);
+  // console.log("num:", exerciselistlength);
+
+  useEffect(() => {
+    setExercisesarr(data);
+  }, []);
+
+  console.log("exercisearr", exercisearr);
+
   return (
+    // <h1>kdlskdls</h1>
     <Wrapper>
-      {favourites.length === 0 && (
+      {data.exercises.map === 0 && (
         <Stackdiv>
           <Stack sx={{ width: "100%" }} spacing={2}>
             <LinearProgress color="primary" />
@@ -38,20 +46,19 @@ function Favouriteexercises() {
           </Stack>
         </Stackdiv>
       )}
-      <h1>Favourite Exercises</h1>
-      {favourites.length ? (
+      <h1>Favourite Exercise</h1>
+      {data.exercises.map ? (
         <Card>
-          {favourites.map((item) => (
+          {data.exercises.map((item) => (
             <div key={item.id}>
               <h2> {item.name}</h2>
               <h3> Equipment: {item.equipment}</h3>
               <h3> Body Part: {item.bodyPart}</h3>
-              <img src={item.gifUrl}></img>
+              <img src={item.gifurl}></img>
               <Button
                 onClick={(e) => {
                   console.log(item.id);
                   e.preventDefault();
-                  dispatch(deleteFavouriteExercise(item.id));
                 }}
                 variant="contained"
               >
