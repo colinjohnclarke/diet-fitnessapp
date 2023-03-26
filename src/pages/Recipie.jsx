@@ -42,10 +42,18 @@ function Recipie() {
     setRecipie(recipiedata);
   };
 
+  const recipieobject = {
+    title: recipie.title,
+    image: recipie.image,
+    extendedIngredients: recipie.extendedIngredients,
+    servings: recipie.servings,
+    weightWatcherSmartPoints: recipie.weightWatcherSmartPoints,
+  };
+
   const addfavouriteshandler = async (event) => {
     event.preventDefault();
     console.log("addfavouriteshandler clicked", recipie);
-    await addRecipie({ name: params.name, user: `${getuser}` });
+    await addRecipie(recipieobject);
   };
 
   const loadingContentbar = (

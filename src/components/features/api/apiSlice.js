@@ -8,7 +8,7 @@ const initialState = usersAdapter.getInitialState();
 
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3600" }),
+  baseQuery: fetchBaseQuery({ baseUrl:  `http://localhost:3600`  }),
   tagTypes: ["Users"],
 
   endpoints: (builder) => ({

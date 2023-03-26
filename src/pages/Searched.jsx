@@ -47,14 +47,16 @@ function Searched() {
         <Search />
         <h1> You Searched: {params.search}</h1>
         <Grid>
+        <Fade></Fade>
           {searchedreipie.map((item) => {
             return (
               <NavLink to={"/recipie/" + item.id}>
                 <Card>
                   <img src={item.image} alt={item.title} />
                   <div className="likeddivsearched">
-                    <h3>{item.title}</h3> <Liked />
+                    <h3>{item.title}</h3> 
                   </div>
+                  
                 </Card>
               </NavLink>
             );
@@ -76,7 +78,7 @@ const Wrapper = styled.div`
 const Grid = styled.div`
   position: relative;
   top: 10px;
-  left: 10px;
+  left: 25px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -84,6 +86,7 @@ const Grid = styled.div`
   max-width: 2000px;
   text-overflow: ellipsis;
   text-decoration: none;
+
 
   a {
     text-decoration: none;
@@ -100,11 +103,21 @@ const Grid = styled.div`
   }
 `;
 
+const Fade = styled.div`
+height: 100%; 
+width: 100%; 
+background-color: green; 
+position-absolute; 
+z-index: 2; 
+
+`; 
+
 const Card = styled.div`
   text-align: center;
-  margin-top: 3%;
-  margin-left: 4%;
-  padding: 2%; 
+  // margin-top: 3%;
+  // margin-left: 4%;
+  // padding: 2%; 
+  max-width: 350px; 
   border-radius: 2px;
   text-align: left;
   overflow: hidden;
@@ -114,6 +127,7 @@ const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px; 
     text-decoration: none; 
+    
 
     @media (min-width: 700px) {
       min-height: 400px; 
@@ -130,13 +144,31 @@ const Card = styled.div`
     text-decoration: none; 
   }
 
+  &after::{
+    height: 100%; 
+width: 100%; 
+background-color: green; 
+position-absolute; 
+z-index: 2; 
+  }
 
 
+h3{
+  position: relative; 
+  bottom: 60px; 
+  left: 10%; 
+  z-index: 10;
+  font-size: 140%; 
+  color: white; 
+  max-width: 100%;
+}
 
   img {
-    width: 100%;
-    // max-height: 300px;
+    border: 3px solid; 
+positon: absolute; 
+z-index; -2;
     object-fit: cover;
+    width: 100%; 
   
   }
 `;

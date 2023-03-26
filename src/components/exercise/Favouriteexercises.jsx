@@ -7,71 +7,81 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 
-import { useGetExercisesQuery } from "../features/api/exerciseSlice";
+import {
+  useGetExercisesQuery,
+  useDeleteExercisefromDBMutation,
+} from "../features/api/exerciseSlice";
 
 function Favouriteexercises() {
-  const [exercisesnum, setExercisesnum] = useState([]);
-  const [exercisearr, setExercisesarr] = useState([]);
+  // const [exercisesnum, setExercisesnum] = useState([]);
+  // const [exercisearr, setExercisesarr] = useState([]);
+  const [id, setId] = useState("");
 
   const { data, isLoading, isSuccess, isError, error } = useGetExercisesQuery();
 
+  // const [deleteExercisefromDB,{isLoading: loading , isSuccess: success,  isError: recievederr, error: err}] = useDeleteExercisefromDBMutation();
+
+  const [deleteExercisefromDB] = useDeleteExercisefromDBMutation();
+
   console.log("jkdjsk", data);
-  // const favourites = useSelector(
-  //   (state) => state.addFavouriteExerciseReducer.value
-  // );
 
-  // let exerciselistlength = data.exercises;
-
-  // console.log("num:", exerciselistlength);
+  const deletehandler = async () => {
+    console.log("User to delete", id);
+    console.log("deletehandler clicked");
+    await deleteExercisefromDB({ id });
+  };
 
   useEffect(() => {
-    setExercisesarr(data);
-  }, []);
+    deletehandler(id);
+    console.log("useeffect");
+  }, [id]);
 
-  console.log("exercisearr", exercisearr);
+  let content;
 
-  return (
-    // <h1>kdlskdls</h1>
-    <Wrapper>
-      {data.exercises.map === 0 && (
-        <Stackdiv>
-          <Stack sx={{ width: "100%" }} spacing={2}>
-            <LinearProgress color="primary" />
-          </Stack>
-          <Stack sx={{ width: "100%" }} spacing={2}>
-            <LinearProgress color="primary" />
-          </Stack>
-          <Stack sx={{ width: "100%" }} spacing={2}>
-            <LinearProgress color="primary" />
-          </Stack>
-        </Stackdiv>
-      )}
-      <h1>Favourite Exercise</h1>
-      {data.exercises.map ? (
-        <Card>
-          {data.exercises.map((item) => (
-            <div key={item.id}>
-              <h2> {item.name}</h2>
-              <h3> Equipment: {item.equipment}</h3>
-              <h3> Body Part: {item.bodyPart}</h3>
-              <img src={item.gifurl}></img>
+  if (isLoading) {
+    content = (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  } else if (isSuccess) {
+    if (data.exercises.length) {
+      content = data.exercises.map((item) => {
+        return (
+          <Wrapper>
+            <Card>
+              <h2> {item.exercise_name}</h2>
+              <h3> Target:{item.target}</h3>
+              <h3> Equipment:{item.target}</h3>
+              <img src={item.gifUrl} alt={item.exercise_name} />
               <Button
-                onClick={(e) => {
-                  console.log(item.id);
-                  e.preventDefault();
-                }}
                 variant="contained"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setId(item.id);
+                  console.log("delete btn clicked");
+                }}
               >
+                {" "}
                 Delete
               </Button>
-            </div>
-          ))}
-        </Card>
-      ) : (
-        <h3>Search exercises and add to favourites, they will appear here</h3>
-      )}
-    </Wrapper>
-  );
+            </Card>
+          </Wrapper>
+        );
+      });
+    } else {
+      content = (
+        <Wrapper>
+          <h1>Add to Favourites to start</h1>;
+        </Wrapper>
+      );
+    }
+  } else if (isError) {
+    console.log(error);
+    content = <h1>Error</h1>;
+  }
+
+  return content;
 }
 
 const Wrapper = styled.div`
@@ -121,12 +131,5 @@ const Card = styled.div`
     margin: 3%;
   }
 `;
-
-const Stackdiv = styled.div`
-  position: relative;
-  margin-top: 10px;
-`;
-
-const Exercisediv = styled.div``;
 
 export default Favouriteexercises;

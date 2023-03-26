@@ -11,7 +11,7 @@ import { selectUser } from "./components/features/UserSlice2";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#03fcf8",
+      main: "#3630c4",
     },
   },
   typography: {

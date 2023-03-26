@@ -6,7 +6,7 @@ import HealthFatsandProtein from "../components/HealthFatsandProtein";
 import styled from "styled-components";
 import ExerciseCategory from "../exericsecompoents/ExerciseCategory";
 import Login from "../components/Login";
-
+import Display from "./Display";
 import { useSelector } from "react-redux";
 import { selectUser } from "../components/features/UserSlice2";
 import Users from "../components/Users";
@@ -17,15 +17,17 @@ function Home() {
   let userval = user.value;
   console.log(` this is the user data`, userval);
   return (
+  
     <Wrapper>
+      
       {userval ? (
         <div>
           <h3>Hello !</h3>
 
-          {/* <ExerciseCategory />
-          <Category /> */}
-          <HighProtein />
-          {/* <HealthFatsandProtein />
+          <ExerciseCategory />
+          <Category />
+          {/* <HighProtein />
+          <HealthFatsandProtein />
           <Popular />  */}
         </div>
       ) : (

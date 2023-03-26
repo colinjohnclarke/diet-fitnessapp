@@ -7,7 +7,7 @@ import { login, logout } from "./features/UserSlice2";
 import Settings from "./Settings";
 import Logo from "../components/GetMassivelogo";
 import { useNavigate } from "react-router-dom";
-
+import Display from "../pages/Display";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -43,7 +43,8 @@ function Login() {
 
   return (
     <Wrapper>
-      <h1>Log In</h1>
+      <h1>Login...</h1>
+     <Display/>
       <form onSubmit={loginHandler}>
         <Input
           value={username}
@@ -63,6 +64,9 @@ function Login() {
         ></Input>
 
         <Buttondiv>
+
+<Card></Card>
+
           <Button type="submit" variant="contained" color="primary">
             Login
           </Button>
@@ -77,7 +81,7 @@ function Login() {
         </Buttondiv>
       </form>
 
-      <h3> We are still in dev so use any username to continue... :) </h3>
+     
     </Wrapper>
   );
 }
@@ -86,18 +90,23 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; 
+  
 
-  h3 {
+  h3, h1 {
     margin: 5%;
     paddding: 5%;
+    color: white; 
+    text-align: center; 
   }
 
   form {
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -130,15 +139,72 @@ const Input = styled.input`
 
 const Buttondiv = styled.div`
   margin: 3%;
-  padding: 3%;
+  padding: 10%;
   width: 50%;
+  height: 3y  00px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   button {
     min-width: 100px;
+    position: relative; 
+top: 10%; 
+  
   }
 `;
+
+const Card = styled.div`
+border-radius: 10px;
+height: 80px; 
+width: 150px; 
+top: 32%; 
+cursor: pointer; 
+position: absolute; 
+background-color: black; 
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+overflow: hidden; 
+margin: 5%;
+
+&:before{
+content: "";
+ position: absolute; 
+   z-index: ; 
+  top: -60%; 
+  left: -50%; 
+   height: 200%; 
+   width: 200%; 
+   transform: rotate(1000deg);
+   transition: 3s; 
+   background: conic-gradient( from 90deg, #03fcf8, transparent, #3630c4  );
+}
+
+
+&:hover:before {
+    transform: rotate(-1000deg);
+    transition: 3s; 
+}
+
+&:after{
+    content: "Login...";
+    color: white; 
+    border-radius: 10px;
+    height: 67px; 
+    width: 135px; 
+    position: relative; 
+    top: 8px; 
+    left: 8px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: black;
+    text-transform: uppercase;
+}
+&:active{
+  transform: translateY(5px);
+}
+
+}
+`
 
 export default Login;

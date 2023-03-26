@@ -50,7 +50,7 @@ function Exercise() {
     await addExercise({
       bodypart: exercise.bodyPart,
       equipment: exercise.equipment,
-      gifurl: exercise.gifUrl,
+      gifUrl: exercise.gifUrl,
       id: exercise.id,
       target: exercise.target,
       exercise_name: exercise.name,
@@ -112,7 +112,8 @@ function Exercise() {
           <h1> {exercise.name}</h1>
           <h2> Equipment: {exercise.equipment}</h2>
           <h2> Body Part: {exercise.bodyPart}</h2>
-          <img src={exercise.gifUrl}></img>
+          <img src={exercise.gifUrl} alt={exercise.name}></img>
+
         </Exercisediv>
       </Card>
     </Wrapper>

@@ -43,7 +43,7 @@ function HighProtein() {
         {protein.map((recipie) => {
           return (
             <SplideSlide className="proteindiv">
-              <Card key={recipie.id} className="card">
+              <Card key={recipie.id} className="cards">
                 <NavLink to={"/recipie/" + recipie.id}>
                   <div>
                     <p className="paragraphprotein">{recipie.title}</p>

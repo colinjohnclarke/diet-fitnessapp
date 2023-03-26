@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const exerciseSlice = createApi({
   reducerPath: "exerciseSlice",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3600" }),
+  baseQuery: fetchBaseQuery({ baseUrl:  `http://localhost:3600` }),
   tagTypes: ["Exercises"],
   endpoints: (builder) => ({
     getExercises: builder.query({
@@ -17,19 +17,19 @@ export const exerciseSlice = createApi({
       }),
       invalidatesTags: ["Exercises"],
     }),
-    // deleteExercisefromDB: builder.mutation({
-    //   query: ({ _id }) => ({
-    //     url: "/favouriteexercises",
-    //     method: "DELETE",
-    //     body: { _id },
-    //   }),
-    //   InvalidatesTags: ["Exercises"],
-    // }),
+    deleteExercisefromDB: builder.mutation({
+      query: ({ id }) => ({
+        url: "/favouriteexercises",
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: ["Exercises"],
+    }),
   }),
 });
 
 export const {
   useGetExercisesQuery,
   useAddExerciseMutation,
-  //   useDeleteExercisefromDBMutation,
+  useDeleteExercisefromDBMutation,
 } = exerciseSlice;
